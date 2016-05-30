@@ -1,7 +1,7 @@
 FROM fedora:23
 RUN dnf install -y git python-pip gcc python-devel postgresql-devel redhat-rpm-config
 
-RUN mkdir -p /opt/app && cd /opt/app
+RUN mkdir -p /opt/app
 WORKDIR /opt/app
 
 RUN git clone https://github.com/jacobian/channels-example && \
