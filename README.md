@@ -33,7 +33,6 @@ $ docker-compose -f docker-compose-with-mount.yml up
 ```
 
 Django is able to reload its webserver if you change the code, that's why sources are mounted inside.
-```
 
 
 ## Open in browser
