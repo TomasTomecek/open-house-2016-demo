@@ -25,6 +25,16 @@ worker:
   links:
    - db
    - redis
-  command: python /opt/app/channels-example/manage.py runworker -v3
+  # we need to wait for database setup
+  command: bash -c "sleep 7 && exec python /opt/app/channels-example/manage.py runworker -v3"
 redis:
   image: redis
+migrator:
+  build: .
+  environment:
+   - DATABASE_URL=postgres://user:openhouse2016@db:5432/chat
+   - REDIS_URL=redis://redis:6379/1
+  links:
+   - db
+  # it indeed takes this long to start the database
+  command: bash -c "sleep 5 && exec python /opt/app/channels-example/manage.py migrate"

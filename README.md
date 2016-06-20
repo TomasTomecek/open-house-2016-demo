@@ -33,15 +33,6 @@ $ docker-compose -f docker-compose-with-mount.yml up
 ```
 
 Django is able to reload its webserver if you change the code, that's why sources are mounted inside.
-
-
-## Database
-
-
-The only thing to do is to populate database:
-
-```
-$ docker exec -ti openhouse2016demo_web_1 python /opt/app/channels-example/manage.py migrate
 ```
 
 
