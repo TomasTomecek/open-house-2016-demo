@@ -2,6 +2,8 @@ web:
   build: .
   ports:
    - "8000:8000"
+  volumes:
+   - ./channels-example/:/opt/app/channels-example/
   links:
    - db
    - redis
@@ -25,6 +27,8 @@ worker:
   links:
    - db
    - redis
+  volumes:
+   - ./channels-example/:/opt/app/channels-example/
   command: python /opt/app/channels-example/manage.py runworker -v3
 redis:
   image: redis

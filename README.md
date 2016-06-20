@@ -9,25 +9,43 @@ All credits for writing the app go to @jacobian.
 ## Running with `docker-compose`
 
 
-### Prereq
+### Just the demo
 
-Django is able to reload webserver if we change code, let's take advantage of that! All we have to do is to mount sources inside container(s). That means that we have to clone the sources locally:
+If you just want to try the demo out, all you need to do is to clone this repository and run:
+
+```
+$ docker-compose up
+```
+
+
+### Also changing the app
+
+If you would like to play with the app itself, you should clone it locally:
 
 ```
 $ git clone https://github.com/jacobian/channels-example
 ```
 
-Now we can bring the application to life:
+and then mount the sources inside containers. There's a special compose file for this use case:
 
 ```
-$ docker-compose up
+$ docker-compose -f docker-compose-with-mount.yml up
 ```
+
+Django is able to reload its webserver if you change the code, that's why sources are mounted inside.
+
+
+## Database
+
 
 The only thing to do is to populate database:
 
 ```
 $ docker exec -ti openhouse2016demo_web_1 python /opt/app/channels-example/manage.py migrate
 ```
+
+
+## Open in browser
 
 You can open browser now and check the app:
 
